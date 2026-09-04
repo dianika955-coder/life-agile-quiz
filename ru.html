@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<title>Life Agile — трансформационная программа</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Шесть недель, чтобы вернуться к себе — и обнаружить, что опора, которую ты ищешь, уже внутри.">
+<style>
+:root{
+  --sun-hi:#FDF7EC; --sun:#F8E7CE; --sun-deep:#F0CBA2; --glow:#FAD9AE;
+  --bg:#F7F0E5; --card:#FCF7EE; --paper:#F3EADC;
+  --olive:#4E5647; --olive-deep:#3E4937; --olive-ink:#2D3527;
+  --cream:#F6EFE3; --muted:#6A705E; --muted-soft:#8A907C;
+  --terra:#A6613F; --terra-ink:#8B4F32; --terra-onDark:#EFC3A0;
+  --gold:#C09A55; --gold-onDark:#E3C88F;
+  --line:rgba(78,86,71,.16); --lineDark:rgba(246,239,227,.18);
+  --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--olive);
+  font:400 17px/1.68 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1060px;margin:0 auto;padding:0 26px}
+.narrow{max-width:800px}
+section{padding:96px 0}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.012em;color:var(--olive-ink)}
+h2{font-size:clamp(29px,4.3vw,44px);line-height:1.14}
+h3{font-size:21px;line-height:1.3}
+p{max-width:66ch}
+.kick{font:600 11.5px/1.4 inherit;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--terra-ink);margin-bottom:16px}
+.lede{font-size:19px;color:var(--muted);margin-top:20px}
+.sun{background:linear-gradient(180deg,var(--sun-hi),var(--sun) 60%,var(--bg))}
+.dark{background:var(--olive-deep);color:var(--cream)}
+.dark h2,.dark h3{color:var(--cream)}
+.dark .kick{color:var(--terra-onDark)}
+.dark p{color:rgba(246,239,227,.84)}
+.dark .lede{color:rgba(246,239,227,.72)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:118px 0 104px;overflow:hidden;
+  background:
+    radial-gradient(1100px 520px at 50% -14%,var(--glow) 0%,rgba(250,217,174,0) 68%),
+    radial-gradient(760px 420px at 84% 8%,rgba(248,231,206,.9) 0%,rgba(248,231,206,0) 70%),
+    linear-gradient(180deg,var(--sun-hi) 0%,var(--sun) 42%,var(--bg) 100%)}
+.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(192,154,85,.35),transparent)}
+.sunmark{width:74px;height:74px;margin-bottom:30px;opacity:.85}
+.hero h1{font-size:clamp(33px,5.2vw,58px);line-height:1.08;max-width:20ch}
+.hero h1 em{font-style:normal;color:var(--terra-ink)}
+.hero .lede{font-size:21px;color:var(--olive);max-width:52ch;margin-top:26px}
+.facts{margin-top:34px;font-size:15px;color:var(--muted);letter-spacing:.02em}
+.whisper{margin-top:46px;padding-top:22px;border-top:1px solid rgba(192,154,85,.3);
+  font-size:15.5px;color:var(--muted);max-width:60ch;font-style:italic}
+.btn{display:inline-block;margin-top:32px;background:var(--terra);color:#fff;
+  text-decoration:none;padding:16px 34px;border-radius:999px;
+  font:600 16px/1 inherit;letter-spacing:.01em;
+  box-shadow:0 10px 24px -12px rgba(139,79,50,.7);transition:background .18s,transform .18s}
+.btn:hover{background:var(--terra-ink);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--terra-ink);
+  border:1.5px solid rgba(166,97,63,.45);box-shadow:none}
+.btn.ghost:hover{background:rgba(166,97,63,.07)}
+.dark .btn.ghost{color:var(--terra-onDark);border-color:rgba(239,195,160,.5)}
+.dark .btn.ghost:hover{background:rgba(239,195,160,.1)}
+.btnnote{margin-top:14px;font-size:14.5px;color:var(--muted);max-width:46ch}
+.dark .btnnote{color:rgba(246,239,227,.65)}
+
+/* ---------- generic pieces ---------- */
+.pull{font-family:var(--serif);font-size:clamp(24px,3.4vw,33px);line-height:1.32;
+  color:var(--olive-ink);max-width:32ch;margin:44px 0 0;padding-left:22px;
+  border-left:2px solid var(--terra)}
+.dark .pull{color:var(--cream);border-left-color:var(--terra-onDark)}
+.grid{display:grid;gap:18px;margin-top:44px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 26px}
+.dark .card{background:rgba(246,239,227,.07);border-color:var(--lineDark)}
+.card h3{margin-bottom:10px}
+.card p{font-size:16px;color:var(--muted)}
+.dark .card p{color:rgba(246,239,227,.8)}
+.num{font:600 12px/1 inherit;letter-spacing:.16em;color:var(--gold);margin-bottom:14px}
+.dark .num{color:var(--gold-onDark)}
+.stack p+p{margin-top:18px}
+.tail{margin-top:34px;font-size:16px;color:var(--muted)}
+
+/* ---------- the check ---------- */
+.items{margin:34px 0 0;list-style:none;max-width:780px}
+.item{display:flex;gap:14px;align-items:flex-start;background:var(--card);
+  border:1px solid var(--line);border-radius:12px;padding:15px 18px;margin-bottom:9px;
+  cursor:pointer;transition:background .18s,border-color .18s,transform .12s}
+.item:hover{transform:translateX(2px)}
+.item.on{background:var(--paper);border-color:var(--terra);box-shadow:inset 3px 0 0 var(--terra)}
+.box{flex:0 0 20px;height:20px;margin-top:3px;border-radius:5px;
+  border:1.5px solid rgba(78,86,71,.45);display:flex;align-items:center;justify-content:center;transition:.18s}
+.item.on .box{background:var(--terra);border-color:var(--terra)}
+.box svg{width:12px;height:12px;opacity:0;transition:opacity .15s}
+.item.on .box svg{opacity:1}
+.out{margin-top:26px;max-width:780px;background:var(--olive-deep);color:var(--cream);
+  border-radius:18px;padding:32px 34px;opacity:0;transform:translateY(8px);
+  transition:opacity .3s,transform .3s}
+.out:not(.show){display:none}
+.out.show{opacity:1;transform:none}
+[hidden]{display:none!important}
+.score{font:600 12px/1 inherit;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--terra-onDark);margin-bottom:12px}
+.out h3{font-family:var(--serif);font-size:26px;line-height:1.3;margin-bottom:12px;color:var(--cream)}
+.out p{color:rgba(246,239,227,.85)}
+.out .fin{margin-top:20px;padding-top:18px;border-top:1px solid var(--lineDark);
+  font-size:15px;color:rgba(246,239,227,.68)}
+.reset{display:block;margin-top:16px;background:none;border:0;cursor:pointer;
+  font:400 14px/1 inherit;color:var(--muted);text-decoration:underline;text-underline-offset:3px;padding:0}
+
+/* ---------- map ---------- */
+.weeks{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.wk{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 22px}
+.wk .d{font:600 12px/1 inherit;letter-spacing:.12em;color:var(--terra-ink);margin-bottom:12px}
+.wk h3{font-size:19px;margin-bottom:8px}
+.wk p{font-size:15px;color:var(--muted)}
+.pause{margin:22px 0;background:linear-gradient(180deg,var(--sun-hi),var(--sun));
+  border:1px solid rgba(192,154,85,.35);border-radius:14px;padding:26px 24px}
+.pause b{font-family:var(--serif);font-weight:400;font-size:20px;color:var(--olive-ink)}
+.pause p{margin-top:8px;font-size:16px;color:var(--muted)}
+
+/* ---------- quotes ---------- */
+.q{background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:28px 26px;color:var(--olive);display:flex;flex-direction:column}
+.q p{font-size:16px;color:var(--olive);max-width:none}
+.q p+p{margin-top:14px}
+.who{margin-top:auto;padding-top:22px;display:flex;align-items:center;gap:12px}
+.av{flex:0 0 38px;height:38px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font:600 15px/1 inherit;color:#fff;letter-spacing:.02em}
+.who .nm{font:600 15px/1.25 inherit;color:var(--olive-ink);letter-spacing:0;text-transform:none}
+.who .rl{font:400 13.5px/1.3 inherit;color:var(--muted-soft);letter-spacing:0;text-transform:none;
+  margin-top:2px}
+.dark .q{background:var(--card);border-color:transparent}
+.dark .q p{color:var(--olive)}
+
+/* ---------- price ---------- */
+.price{max-width:780px}
+.pline{padding:24px 0;border-top:1px solid var(--line)}
+.pline:last-of-type{border-bottom:1px solid var(--line)}
+.pline b{font-family:var(--serif);font-weight:400;font-size:23px;color:var(--olive-ink)}
+.pline p{margin-top:8px;font-size:16px;color:var(--muted)}
+
+/* ---------- faq ---------- */
+.faq{max-width:820px;margin-top:38px}
+.fq{border-top:1px solid var(--line);padding:26px 0}
+.fq:last-child{border-bottom:1px solid var(--line)}
+.fq h3{font-size:20px;margin-bottom:10px}
+.fq p{font-size:16px;color:var(--muted)}
+
+.lang{position:absolute;top:26px;right:26px;display:flex;gap:2px;align-items:center;
+  font-size:13.5px;letter-spacing:.08em;z-index:5}
+.lang a{color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:999px}
+.lang a.on{color:var(--olive-ink);background:rgba(255,255,255,.6)}
+.lang span{color:var(--muted-soft)}
+.tagline{font-family:var(--serif);font-style:italic;font-size:17px;
+  color:var(--muted);margin-bottom:18px;letter-spacing:.01em}
+.cc{margin-top:42px;max-width:780px;padding:30px 32px;background:var(--card);
+  border:1px solid rgba(192,154,85,.45);border-radius:16px}
+.cc h3{margin-bottom:10px}
+.cc p{font-size:16px;color:var(--muted)}
+.cc .btn{margin-top:20px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.row .btn{margin-top:32px}
+.foot{padding:70px 0;text-align:center;font-size:14px;color:var(--muted-soft)}
+.foot a{color:var(--terra-ink)}
+@media(max-width:860px){.g3,.g2,.weeks{grid-template-columns:1fr}
+  section{padding:70px 0}.hero{padding:84px 0 70px}}
+</style>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <nav class="lang"><a href="index.html">EN</a><span>·</span><a class="on" href="ru.html">RU</a></nav>
+  <div class="wrap">
+    <svg class="sunmark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <circle cx="50" cy="44" r="21" fill="#F0CBA2"/>
+      <path d="M50 12v-8M50 84v8M22 44h-9M87 44h-9M30 24l-6-6M70 24l6-6M30 64l-6 6M70 64l6 6"
+            stroke="#C09A55" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M8 82c14-7 28-7 42 0s28 7 42 0" stroke="#4E5647" stroke-width="2.4"
+            stroke-linecap="round" fill="none" opacity=".55"/>
+    </svg>
+    <div class="tagline">Меньше чужого. Больше себя.</div>
+    <div class="kick">Трансформационная программа · 6 недель</div>
+    <h1>У тебя получилась жизнь, которая всем нравится.<br>
+      <em>Кроме тебя.</em></h1>
+    <p class="lede">Для тех, кто привык всё держать на себе — и оказался на развилке.
+      После паузы, на смене работы или этапа. Или просто в тот момент, когда снаружи
+      всё в порядке, а изнутри уже давно нет.</p>
+    <div class="facts">Русскоязычный поток: 9 сентября — 14 октября 2026 ·
+      шесть встреч по два часа · небольшая группа<br>
+      Потоки собираю примерно раз в полтора месяца. Англоязычный — 28 сентября.</div>
+    <div class="row">
+      <a class="btn" href="https://widget.easyweek.de/diana-abdrakhmanova-coach/86580">Давай сначала поговорим — 20 минут</a>
+      <a class="btn ghost" href="#how">Как это устроено</a>
+    </div>
+    <p class="whisper">Это не курс, за которым надо успевать. Это шесть недель, когда ты
+      наконец смотришь на свою жизнь — и рядом человек, который не будет объяснять тебе,
+      как правильно.</p>
+  </div>
+</header>
+
+<!-- ============ STARTING POINT ============ -->
+<section>
+  <div class="wrap narrow stack">
+    <div class="kick">С чего это обычно начинается</div>
+    <h2>Ты и так знаешь, что делать. И всё равно не делаешь.</h2>
+    <p class="lede">Книги прочитаны. Планы составлены. На работе ты каждую неделю
+      разбираешься с вещами посложнее.</p>
+    <p>А своё стоит. Важное переезжает на следующий месяц, и причина есть всегда,
+      и каждый раз уважительная. Снаружи всё хорошо. Внутри — усталость, которую никто
+      не видит.</p>
+    <p>Это не про дисциплину. Без дисциплины так далеко не доходят. Это про то, что
+      способ жить, который тебя сюда довёз, перестал тебе подходить. А остановиться
+      и это заметить некогда — жизнь-то едет.</p>
+    <div class="pull">Оно не взрывается. Оно стирается.</div>
+  </div>
+</section>
+
+<!-- ============ QUICK CHECK ============ -->
+<section class="sun">
+  <div class="wrap">
+    <div class="kick">Быстрая проверка</div>
+    <h2>Где вы сейчас?</h2>
+    <p class="lede">Восемь фраз. Отметь те, что про этот месяц. Не вообще
+      и не когда-то — про сейчас.</p>
+    <ul class="items" id="items"></ul>
+    <div class="out" id="out">
+      <div class="score" id="score"></div>
+      <h3 id="head"></h3>
+      <p id="body"></p>
+      <div class="fin">Какое бы число ни вышло — это не диагноз. Это просто первый взгляд
+        на то, как есть. С него же начинается и первая встреча.</div>
+    </div>
+    <button class="reset" id="reset" hidden>Начать заново</button>
+    <div class="cc">
+      <h3>А если хочется подробнее — пройди «Ключ к росту»</h3>
+      <p>Что удерживает тебя от прорыва прямо сейчас. Тест показывает твой сегодняшний
+        паттерн, главное препятствие и зону, где стоит расти. Три минуты,
+        без регистрации.</p>
+      <a class="btn ghost" href="https://dianika955-coder.github.io/life-agile-quiz/">Начать тест</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT THIS IS ============ -->
+<section id="how">
+  <div class="wrap">
+    <div class="kick">Что это на самом деле</div>
+    <h2>Три вопроса, на которые обычно нет времени</h2>
+    <p class="lede">Они простые. Но пока на них не ответишь, всё остальное — планы,
+      режимы, новые приложения — работает вполсилы.</p>
+    <div class="grid g3">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>Чего я хочу на самом деле?</h3>
+        <p>Не то, что положено хотеть в этом возрасте и на этом месте. И не цель,
+          доставшуюся от работы, от семьи, от себя десятилетней давности.</p>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>Мои ли цели, которые я тяну?</h3>
+        <p>Какие-то твои — и, увидев это, ты потянешь их с другой силой. Какие-то нет —
+          и отпустить их даёт больше энергии, чем любая система планирования.</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>Где моя опора?</h3>
+        <p>Опору и ответы ты ищешь снаружи, а они уже внутри. Всё, что мы делаем, —
+          про то, чтобы они стали слышны. Не про то, чтобы поставить новые.</p>
+      </div>
+    </div>
+    <p class="tail">Если коротко: вспомнить себя, увидеть свою силу и заново перечитать
+      собственный опыт. Чтобы дышалось легче. И чтобы там, где сейчас самое важное,
+      наконец появился результат, от которого хорошо.</p>
+  </div>
+</section>
+
+<!-- ============ NO PILGRIMAGE ============ -->
+<section class="sun">
+  <div class="wrap narrow stack">
+    <div class="kick">Как мы туда идём</div>
+    <h2>Чтобы найти себя, не обязательно разбирать свою жизнь на части.</h2>
+    <p>Где-то внутри живёт мысль, что настоящие перемены — это обязательно громко.
+      Годы разбора прошлого. Ретрит подальше от всех. Бросить всё и начать заново.
+      Иногда жизнь правда просит именно так. Гораздо чаще — нет. И пока мы ждём громкую
+      версию, тихая не случается.</p>
+    <p>Мы работаем с тем, что у тебя уже есть. За годы в компаниях или в своём деле
+      ты научилась многому: читать ситуацию, расставлять приоритеты, решать без полных
+      данных, видеть, что не работает, и перестраивать на ходу, вести людей через
+      изменения.</p>
+    <p>Каждый день ты этим пользуешься. И почти никогда — для себя.</p>
+    <div class="pull">Ты не начинаешь с нуля. Ты разворачиваешь к себе то,
+      что и так умеешь.</div>
+  </div>
+</section>
+
+<!-- ============ THE TURN ============ -->
+<section>
+  <div class="wrap">
+    <div class="kick">Важный поворот</div>
+    <h2>Иногда нас перегружают не слабости. Нас перегружают сильные стороны.</h2>
+    <p class="lede">Ответственность — и ты несёшь больше, чем твоё. Высокая планка —
+      и всё делается на сто двадцать процентов. Забота — и в собственном списке
+      ты в самом конце. Самодостаточность — и попросить о помощи почему-то нельзя.</p>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Что мы не трогаем</h3>
+        <p>Твою силу. Она никуда не денется — она тебя сюда и привела.
+          И дальше понадобится.</p>
+      </div>
+      <div class="card">
+        <h3>Что мы меняем</h3>
+        <p>Форму, в которой она включается. Автоматически, без меры и не спрашивая
+          твоего согласия.</p>
+      </div>
+    </div>
+    <div class="pull">Я не отпускаю свою силу.<br>Я отпускаю форму, в которой она мне
+      больше не помогает.</div>
+    <p class="tail">Тебя здесь никто не будет переделывать. Иногда меняться и не надо —
+      надо по-другому распорядиться тем, что уже есть.</p>
+  </div>
+</section>
+
+<!-- ============ TOGETHER ============ -->
+<section class="dark">
+  <div class="wrap narrow stack">
+    <div class="kick">Не в одиночку</div>
+    <h2>Шесть человек. И это не для массовости.</h2>
+    <p>Всё это можно пройти и в одиночку. Только медленнее — и мимо той части,
+      которая делает основную работу.</p>
+    <p>Кто-то вслух говорит то, что ты про себя сформулировать не могла, — и вдруг
+      становится понятно. Ответ приходит не из совета, а из узнавания. Половину того,
+      что участницы уносят с собой, они находят в чьей-то чужой фразе.</p>
+    <p>И ещё одно, совсем простое: тихо всё бросить, когда рядом идут те же шесть
+      недель, гораздо труднее. Это не про контроль. Это про то, что ты не одна.</p>
+    <div class="pull">Трое-шестеро. Мало, чтобы кто-то старался выглядеть хорошо.
+      Достаточно, чтобы не быть с этим одной.</div>
+  </div>
+</section>
+
+<!-- ============ NOT THERAPY ============ -->
+<section>
+  <div class="wrap narrow stack">
+    <div class="kick">Скажу прямо</div>
+    <h2>Это не терапия. И она ею не притворяется.</h2>
+    <p>Мы не идём в детство. Мы не ищем, что в тебе сломано, — там ничего не сломано.
+      Мы работаем с тем, что есть сейчас: твоя неделя, твои силы, твои решения и то,
+      как ты всё это на себе несёшь.</p>
+    <p>Терапия спрашивает: <em>почему я такая</em>. Мы спрашиваем: <em>и что я с этим
+      делаю с понедельника</em>. Нужно и то и другое. Просто это разная работа,
+      и одна другую не заменяет.</p>
+    <p>А если всплывёт что-то, для чего нужна другая помощь, я скажу об этом прямо.
+      Не буду делать вид, что программа это удержит.</p>
+    <div class="pull">Без диагнозов. Без починки. Шесть встреч — и твоя собственная
+      жизнь вместо учебника.</div>
+  </div>
+</section>
+
+<!-- ============ THE MAP ============ -->
+<section class="sun">
+  <div class="wrap">
+    <div class="kick">Маршрут</div>
+    <h2>Шесть встреч за шесть недель</h2>
+    <p class="lede">Каждую среду в 18:00 CET. Между встречами — один эксперимент
+      и пара минут вечером. Чтобы новое успело прожить обычную неделю,
+      а не только созвон.</p>
+    <div class="weeks">
+      <div class="wk"><div class="d">НЕДЕЛЯ 1 · 9 СЕН</div><h3>Где я сейчас?</h3>
+        <p>Смотрим, куда уходят силы и из какого состояния ты принимаешь решения.</p></div>
+      <div class="wk"><div class="d">НЕДЕЛЯ 2 · 16 СЕН</div><h3>Почему я застреваю?</h3>
+        <p>Твоя настоящая неделя: в какие часы ты в лучшей форме — и что эти часы
+          съедает.</p></div>
+      <div class="wk"><div class="d">НЕДЕЛЯ 3 · 23 СЕН</div><h3>Чего я хочу по-настоящему?</h3>
+        <p>Отделяем своё от того, что ты несёшь за кого-то другого.</p></div>
+      <div class="wk"><div class="d">НЕДЕЛЯ 4 · 30 СЕН</div><h3>Кто управляет моей жизнью?</h3>
+        <p>Сильные стороны, опора — и места, где ты отдаёшь руль.</p></div>
+      <div class="wk"><div class="d">НЕДЕЛЯ 5 · 7 ОКТ</div><h3>Как это живёт в реальности?</h3>
+        <p>Маленькие шаги, которые переживут плохую неделю. На большие силы воли
+          не всегда хватает.</p></div>
+      <div class="wk"><div class="d">НЕДЕЛЯ 6 · 14 ОКТ</div><h3>Интеграция</h3>
+        <p>Что остаётся с тобой, твоими словами. И как жить это дальше без меня.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW A WEEK LOOKS ============ -->
+<section>
+  <div class="wrap">
+    <div class="kick">Как это проходит</div>
+    <h2>Как выглядит одна неделя изнутри</h2>
+    <div class="grid g2">
+      <div class="card"><h3>Встреча — два часа</h3>
+        <p>Небольшая группа в зуме. Практика в тишине, потом разбираем на своих
+          ситуациях, а не на примерах из учебника.</p></div>
+      <div class="card"><h3>Твоё пространство</h3>
+        <p>Практики интерактивные и остаются у тебя. Ответы сохраняются: вернёшься
+          через месяц — увидишь, что сдвинулось. Их не видит никто, я в том числе.</p></div>
+      <div class="card"><h3>Один эксперимент в неделю</h3>
+        <p>Не десять новых привычек. Одно изменение — и внимание к тому,
+          что из этого выйдет.</p></div>
+      <div class="card"><h3>Две минуты вечером</h3>
+        <p>Один вопрос себе: что сегодня было по-настоящему важным и куда ушли силы.
+          Всё.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="dark">
+  <div class="wrap">
+    <div class="kick">Не отзывы на камеру. Сообщения в чате.</div>
+    <h2>Их слова, а не мои обещания.</h2>
+    <!-- ВНИМАНИЕ: имена и подписи — заглушки. Замените на настоящие (с разрешения участниц). -->
+    <div class="grid g3">
+      <div class="q">
+        <p>В первый день у меня были интерес и сомнения. Сомнения в том, что что-то
+          может измениться без капитальных перемен: есть обстоятельства, они здесь
+          рулят, а я подстраиваюсь, насколько получается.</p>
+        <p>Главное, что случилось, — ощущение авторства жизни. Сейчас я в поездке
+          с семьёй, поводов для беспокойства достаточно. И замечаю, насколько спокойнее
+          и легче я всё воспринимаю.</p>
+        <div class="who"><span class="av" style="background:#A6613F">А</span><span><span class="nm">Анна</span><br><span class="rl">Консультант · вернулась после семейной паузы</span></span></div>
+      </div>
+      <div class="q">
+        <p>Много лет я работала с 9 до 18 и до полудня была совершенно неэффективна.
+          Поэтому задерживалась, регулярно перерабатывала — и в итоге сильно выгорела.</p>
+        <p>Я наконец это признала и переставила всё, что не требует фокуса, на первую
+          половину дня. Не «как у всех» и не как было положено в моей голове.</p>
+        <div class="who"><span class="av" style="background:#8B7A3F">О</span><span><span class="nm">Ольга</span><br><span class="rl">Руководитель отдела в международной компании</span></span></div>
+      </div>
+      <div class="q">
+        <p>Села писать программу — ходила, оттягивала, поплакала о том, какая
+          я несчастная. Потом вытерла пыль только там, где буду работать. Десять минут
+          писала всё, что тревожит: сначала была жалость к себе, а потом поднялась
+          злость. А злость — это энергия.</p>
+        <p>Обстоятельства вокруг ещё не изменились. Но я двигаюсь и делаю то,
+          что очень долго не делала.</p>
+        <div class="who"><span class="av" style="background:#6E7A56">Ю</span><span><span class="nm">Юлия</span><br><span class="rl">Ведёт свою практику</span></span></div>
+      </div>
+    </div>
+    <div class="pull">Я управляю своей жизнью, а не просто справляюсь с ней.</div>
+  </div>
+</section>
+
+<!-- ============ FORMAT & COST ============ -->
+<section id="talk">
+  <div class="wrap price">
+    <div class="kick">Формат</div>
+    <h2>Как всё устроено и сколько стоит</h2>
+    <p class="lede">Шесть встреч по два часа, по средам в 18:00 CET, шесть недель
+      подряд. Трое-шестеро в группе. Всё остаётся у тебя: записи, материалы
+      и твоё пространство с практиками.</p>
+    <p style="margin-top:24px">Участвовать можно в двух форматах.</p>
+    <div class="pline">
+      <b>Группа — 700 €</b>
+      <p>Шесть встреч, все практики, моя обратная связь на то, что ты делаешь,
+        общий чат. Вся программа целиком, вместе с остальными.</p>
+    </div>
+    <div class="pline">
+      <b>Группа плюс личная работа — 1200 €</b>
+      <p>Та же программа, только ближе к тебе. Ты проходишь CliftonStrengths
+        и разбираешь результаты со мной один на один — и работа с сильными сторонами
+        перестаёт быть про людей вообще и становится про тебя. Плюс четыре
+        индивидуальные встречи после программы, чтобы примерить инструменты к тому,
+        что у тебя происходит прямо сейчас.</p>
+    </div>
+    <p class="tail">Потоки я собираю примерно раз в полтора месяца. Не попадает этот —
+      напиши, скажу, когда следующий. Не подходит время или формат — тоже напиши,
+      посмотрим вместе. Не хочется, чтобы ты сама за меня решила, что тебе это не подходит.</p>
+    <a class="btn" href="https://widget.easyweek.de/diana-abdrakhmanova-coach/86580">Давай сначала поговорим — 20 минут</a>
+    <p class="btnnote">Без сценария и без уговоров. Ты рассказываешь, что происходит,
+      а я говорю, подходит ли для этого программа. И если не подходит — тоже скажу.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sun">
+  <div class="wrap">
+    <div class="kick">Прежде чем решить</div>
+    <h2>Вопросы, которые мне правда задают</h2>
+    <div class="faq">
+      <div class="fq"><h3>Мне это подходит?</h3>
+        <p>Если снаружи всё работает, а внутри пусто — да. Ко мне приходят не в кризисе.
+          Приходят взрослые, состоявшиеся и тихо уставшие. И не надо приходить
+          с готовым запросом: «что-то не так, а что — не могу назвать» — нормальная
+          точка старта.</p></div>
+      <div class="fq"><h3>У меня нет времени на ещё один курс.</h3>
+        <p>Два часа в неделю, шесть раз. Между встречами — один эксперимент и пара
+          минут вечером. Никаких завалов домашкой. А если неделя не задалась,
+          программа это переживёт: она ровно про это.</p></div>
+      <div class="fq"><h3>А если я пропущу встречу?</h3>
+        <p>Записи и материалы остаются у тебя, практики — в твоём пространстве.
+          Догонишь в своём темпе. Приходи на следующую и не извиняйся.</p></div>
+      <div class="fq"><h3>Надо ли рассказывать личное при группе?</h3>
+        <p>Только то, что ты сама решишь сказать. Ответы в практиках видишь только ты —
+          я их тоже не вижу. Группа маленькая специально: никто ни перед кем
+          не отчитывается, и по кругу с исповедями мы не ходим.</p></div>
+      <div class="fq"><h3>Чем это отличается от того, что я уже пробовала?</h3>
+        <p>Обычно начинают с действий: новый план, новое приложение, новый режим
+          с понедельника. Мы начинаем на шаг раньше — с состояния. Потому что то,
+          что ты можешь сделать, зависит от того, из чего ты это делаешь. Поэтому планы
+          и не держались. И дисциплина тут ни при чём.</p></div>
+      <div class="fq"><h3>Группа или с личной работой?</h3>
+        <p>Большинству хватает группы. Личное берут, когда хочется разобрать свои
+          сильные стороны предметно и получить четыре встречи один на один после
+          программы. Сомневаешься — бери группу, личное всегда можно добавить.</p></div>
+    </div>
+    <p class="tail">Всё ещё не уверена — просто напиши. Мне спокойнее сказать «сейчас
+      не твой момент», чем продать тебе место.</p>
+  </div>
+</section>
+
+<!-- ============ CLOSE ============ -->
+<section class="dark">
+  <div class="wrap narrow stack">
+    <div class="kick">Последнее</div>
+    <h2>Шесть недель не перестроят твою жизнь.</h2>
+    <p class="lede">Они могут поменять точку, из которой ты на неё смотришь.
+      А это меняет почти всё остальное.</p>
+    <p>Не надо приходить готовой, ясной и с планом. Надо только согласиться посмотреть —
+      в хорошей компании, два часа в неделю.</p>
+    <a class="btn ghost" href="https://widget.easyweek.de/diana-abdrakhmanova-coach/86580">Давай сначала поговорим — 20 минут</a>
+  </div>
+</section>
+
+<div class="foot">
+  <div class="wrap">Life Agile · Диана Абдрахманова ·
+    <a href="https://t.me/business_coach_Diana">Telegram</a> ·
+    <a href="index.html">English-language cohort — starts 28 September</a></div>
+</div>
+
+<script>
+const Q=[
+ "Снаружи у меня всё хорошо. Внутри я устала так, что этого не видно.",
+ "Я много успеваю. И не всегда понимаю, во что это сложилось.",
+ "Мои лучшие часы уходят на чужое срочное.",
+ "Я откладываю то, что для меня важно. Причина есть всегда, и она честная.",
+ "План ломается — и я почему-то делаю вывод о себе.",
+ "Я тащу больше, чем моё. Замечаю, когда уже пусто.",
+ "Отдых больше не восстанавливает.",
+ "Я знаю, что нужно делать. И не делаю."
+];
+const R=[
+ {min:0,max:2,h:"Похоже, сейчас ты в своей жизни.",
+  b:"Ничего особо не тянет — и это стоит заметить, а не проскочить. Вернись к этим восьми строчкам, если что-то изменится: такие вещи подкрадываются тихо."},
+ {min:3,max:5,h:"Это та точка, где ещё легко.",
+  b:"Не горит. Просто что-то начало сползать: сегодня это ничего не стоит, а через год стоит дорого. Сейчас самый удобный момент посмотреть. Обычно его и пропускают."},
+ {min:6,max:8,h:"Это не про то, что с тобой что-то не так.",
+  b:"Так бывает, когда способ жить, который работал, перестал подходить, — а ты всё ещё живёшь по нему, потому что раньше он работал. Дисциплины тут не добавить. Нужна другая точка, из которой начинать. Для этого и есть эти шесть недель."}
+];
+const TICK='<svg viewBox="0 0 12 12" fill="none"><path d="M1.5 6.2l3 3 6-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const on=new Set(), L=document.getElementById('items');
+Q.forEach((t,i)=>{
+  const li=document.createElement('li');
+  li.className='item'; li.tabIndex=0; li.setAttribute('role','checkbox');
+  li.setAttribute('aria-checked','false');
+  li.innerHTML='<span class="box">'+TICK+'</span><span class="t">'+t+'</span>';
+  const flip=()=>{on.has(i)?on.delete(i):on.add(i);
+    li.classList.toggle('on',on.has(i));
+    li.setAttribute('aria-checked',on.has(i)?'true':'false'); render();};
+  li.onclick=flip;
+  li.onkeydown=e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();flip();}};
+  L.appendChild(li);
+});
+function render(){
+  const n=on.size, out=document.getElementById('out');
+  document.getElementById('reset').hidden = n===0;
+  if(!n){out.classList.remove('show');return;}
+  const r=R.find(x=>n>=x.min&&n<=x.max);
+  document.getElementById('score').textContent=n+' из 8';
+  document.getElementById('head').textContent=r.h;
+  document.getElementById('body').textContent=r.b;
+  out.classList.add('show');
+}
+document.getElementById('reset').onclick=()=>{
+  on.clear();
+  document.querySelectorAll('.item').forEach(el=>{el.classList.remove('on');
+    el.setAttribute('aria-checked','false');});
+  render();
+};
+</script>
+</html>
